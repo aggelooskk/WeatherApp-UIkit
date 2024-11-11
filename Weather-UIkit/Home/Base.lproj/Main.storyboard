@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -86,7 +87,74 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="K43-tg-bRc" id="ZMw-n1-qxC">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="125"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FYO-FJ-DWC">
+                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="125"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IK7-B5-6fc">
+                                                        <size key="itemSize" width="128" height="128"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DailyForecastCell" id="7RY-pC-OMX" customClass="DailyForecastCell" customModule="Weather_UIkit" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="-1.6666666666666667" width="128" height="128"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="OB3-7f-KoX">
+                                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sun.max.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="EeF-qU-CSB">
+                                                                        <rect key="frame" x="3" y="32" width="122" height="64"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" secondItem="EeF-qU-CSB" secondAttribute="height" multiplier="1:1" id="Nzf-rb-tTp"/>
+                                                                        </constraints>
+                                                                    </imageView>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7:00 am" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLg-ur-Evq">
+                                                                        <rect key="frame" x="39" y="11" width="50" height="16"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="36°" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j3O-xu-rRP">
+                                                                        <rect key="frame" x="53.000000000000007" y="101" width="22.333333333333336" height="15.666666666666671"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="j3O-xu-rRP" firstAttribute="centerX" secondItem="OB3-7f-KoX" secondAttribute="centerX" id="1R8-Ae-2SV"/>
+                                                                    <constraint firstItem="EeF-qU-CSB" firstAttribute="height" secondItem="OB3-7f-KoX" secondAttribute="height" multiplier="0.5" id="9oo-0R-xat"/>
+                                                                    <constraint firstItem="EeF-qU-CSB" firstAttribute="leading" secondItem="OB3-7f-KoX" secondAttribute="leading" constant="3" id="F2x-K9-JDt"/>
+                                                                    <constraint firstItem="ZLg-ur-Evq" firstAttribute="centerX" secondItem="OB3-7f-KoX" secondAttribute="centerX" id="GTu-pB-rQF"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="EeF-qU-CSB" secondAttribute="trailing" constant="3" id="lZs-2U-SPZ"/>
+                                                                    <constraint firstItem="j3O-xu-rRP" firstAttribute="top" secondItem="EeF-qU-CSB" secondAttribute="bottom" constant="5" id="utf-pU-WAx"/>
+                                                                    <constraint firstItem="EeF-qU-CSB" firstAttribute="top" secondItem="ZLg-ur-Evq" secondAttribute="bottom" constant="5" id="vkj-W5-M7C"/>
+                                                                    <constraint firstItem="EeF-qU-CSB" firstAttribute="centerY" secondItem="OB3-7f-KoX" secondAttribute="centerY" id="yV8-ay-3Ga"/>
+                                                                </constraints>
+                                                            </collectionViewCellContentView>
+                                                            <size key="customSize" width="128" height="128"/>
+                                                            <connections>
+                                                                <outlet property="img" destination="EeF-qU-CSB" id="ahc-s8-nWS"/>
+                                                                <outlet property="temperatureLabel" destination="j3O-xu-rRP" id="ekL-bD-jKY"/>
+                                                                <outlet property="timeLabel" destination="ZLg-ur-Evq" id="VpW-vH-sqE"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                </collectionView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="FYO-FJ-DWC" secondAttribute="trailing" id="3IR-M5-J4d"/>
+                                                <constraint firstAttribute="bottom" secondItem="FYO-FJ-DWC" secondAttribute="bottom" id="KB1-yY-Yxq"/>
+                                                <constraint firstItem="FYO-FJ-DWC" firstAttribute="top" secondItem="ZMw-n1-qxC" secondAttribute="top" id="ZeI-6R-MJ6"/>
+                                                <constraint firstItem="FYO-FJ-DWC" firstAttribute="leading" secondItem="ZMw-n1-qxC" secondAttribute="leading" id="xtx-Gb-nyD"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="collectionView" destination="FYO-FJ-DWC" id="hNi-C9-4Kk"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeWeeklyForecastRow" rowHeight="250" id="LS0-QX-jad" customClass="HomeWeeklyForecastRow" customModule="Weather_UIkit" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="350" width="393" height="250"/>
