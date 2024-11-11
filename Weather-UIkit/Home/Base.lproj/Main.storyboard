@@ -26,7 +26,59 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QqW-n2-3SR" id="qj0-Mp-IXp">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="175"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sun.max.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="FJe-lu-J7Q">
+                                                    <rect key="frame" x="283" y="5" width="105" height="105"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="FJe-lu-J7Q" secondAttribute="height" multiplier="1:1" id="Dp3-T6-uhY"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="36°" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZV-5Z-akC">
+                                                    <rect key="frame" x="157" y="57.666666666666657" width="79" height="60"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="50"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Athens" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ivt-bi-byJ">
+                                                    <rect key="frame" x="170" y="36.666666666666664" width="53.333333333333343" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clear" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CQW-mU-L9A">
+                                                    <rect key="frame" x="176.66666666666666" y="117.66666666666669" width="40" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="H:37° L:23°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7MN-Dv-WCm">
+                                                    <rect key="frame" x="151.66666666666666" y="140.66666666666666" width="90" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="CQW-mU-L9A" firstAttribute="centerX" secondItem="qj0-Mp-IXp" secondAttribute="centerX" id="2ys-Wx-4OE"/>
+                                                <constraint firstItem="FJe-lu-J7Q" firstAttribute="height" secondItem="qj0-Mp-IXp" secondAttribute="height" multiplier="0.6" id="99M-3r-nyF"/>
+                                                <constraint firstAttribute="trailing" secondItem="FJe-lu-J7Q" secondAttribute="trailing" constant="5" id="Aqd-nh-mZ2"/>
+                                                <constraint firstItem="CQW-mU-L9A" firstAttribute="top" secondItem="zZV-5Z-akC" secondAttribute="bottom" id="Nhr-gS-keO"/>
+                                                <constraint firstItem="Ivt-bi-byJ" firstAttribute="centerX" secondItem="qj0-Mp-IXp" secondAttribute="centerX" id="Ujp-ub-zEd"/>
+                                                <constraint firstItem="7MN-Dv-WCm" firstAttribute="centerX" secondItem="qj0-Mp-IXp" secondAttribute="centerX" id="WF1-3R-IPY"/>
+                                                <constraint firstItem="7MN-Dv-WCm" firstAttribute="top" secondItem="CQW-mU-L9A" secondAttribute="bottom" constant="2" id="Xk7-vT-RBL"/>
+                                                <constraint firstItem="zZV-5Z-akC" firstAttribute="centerX" secondItem="qj0-Mp-IXp" secondAttribute="centerX" id="iAZ-Mo-mO5"/>
+                                                <constraint firstItem="zZV-5Z-akC" firstAttribute="top" secondItem="Ivt-bi-byJ" secondAttribute="bottom" id="oql-bJ-HYr"/>
+                                                <constraint firstItem="FJe-lu-J7Q" firstAttribute="top" secondItem="qj0-Mp-IXp" secondAttribute="top" constant="5" id="scl-sU-YeV"/>
+                                                <constraint firstItem="zZV-5Z-akC" firstAttribute="centerY" secondItem="qj0-Mp-IXp" secondAttribute="centerY" id="tdJ-ed-17u"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="CQW-mU-L9A" id="PLY-2w-QLG"/>
+                                            <outlet property="highlowLabel" destination="7MN-Dv-WCm" id="B4D-W6-bFi"/>
+                                            <outlet property="img" destination="FJe-lu-J7Q" id="6gC-NF-6lj"/>
+                                            <outlet property="locationLabel" destination="Ivt-bi-byJ" id="YSe-XV-btL"/>
+                                            <outlet property="temperatureLabel" destination="zZV-5Z-akC" id="4fs-Yq-Fz1"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeCarouselRow" rowHeight="125" id="K43-tg-bRc" customClass="HomeCarouselRow" customModule="Weather_UIkit" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="225" width="393" height="125"/>
@@ -85,6 +137,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="sun.max.fill" catalog="system" width="128" height="125"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -9,6 +9,12 @@ import UIKit
 
 class HomeTopRow: UITableViewCell {
     static let id = "HomeTopRow"
+    
+    @IBOutlet private weak var img: UIImageView!
+    @IBOutlet private weak var temperatureLabel: UILabel!
+    @IBOutlet private weak var locationLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var highlowLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,6 +25,10 @@ class HomeTopRow: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
        
+    }
+    
+    func configure() {
+        
     }
 
 }
