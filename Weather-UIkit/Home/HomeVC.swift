@@ -31,13 +31,13 @@ extension HomeVC: UITableViewDataSource {
         let row = indexPath.row
         switch row {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: HomeTopRow.id, for: <#T##IndexPath#>) as! HomeTopRow
+            let cell = tableView.dequeueReusableCell(withIdentifier: HomeTopRow.id, for: indexPath) as! HomeTopRow
             return cell
         case 1:
-           let cell = tableView.dequeueReusableCell(withIdentifier: HomeCarouselRow.id, for: <#T##IndexPath#>) as! HomeCarouselRow
+            let cell = tableView.dequeueReusableCell(withIdentifier: HomeCarouselRow.id, for: indexPath) as! HomeCarouselRow
             return cell
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: HomeWeeklyForecastRow.id, for: <#T##IndexPath#>) as! HomeWeeklyForecastRow
+            let cell = tableView.dequeueReusableCell(withIdentifier: HomeWeeklyForecastRow.id, for: indexPath) as! HomeWeeklyForecastRow
             return cell
         default:
            return UITableViewCell()
