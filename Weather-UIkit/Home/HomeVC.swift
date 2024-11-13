@@ -14,6 +14,11 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        Api.shared.fetchCurrentWeather { weather in
+            guard let weather else { return }
+            print("not received data here")
+            // update tableview now
+        }
     }
 
     private func setupTableView() {
