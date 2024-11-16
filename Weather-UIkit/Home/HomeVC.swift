@@ -72,6 +72,7 @@ extension HomeVC: UITableViewDataSource {
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: HomeWeeklyForecastRow.id, for: indexPath) as! HomeWeeklyForecastRow
+            cell.configure(weeklyForecast)
             return cell
         default:
            return UITableViewCell()

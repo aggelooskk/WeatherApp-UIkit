@@ -9,6 +9,7 @@ import UIKit
 
 class HomeWeeklyForecastRow: UITableViewCell {
     static let id = "HomeWeeklyForecastRow"
+    private var dailyForecast: [DailyForecast] = []
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -29,8 +30,19 @@ class HomeWeeklyForecastRow: UITableViewCell {
         tableView.delegate = self
     }
     
-    func configure() {
+    func configure(_ forecast: WeeklyForecast?) {
+        guard let list = forecast?.list else { return }
         
+    }
+    private func getDailyForecasts(_ list: [WeeklyForecastList]) -> [DailyForecast] {
+        var dailyForecasts: [DailyForecast] = []
+        for item in list {
+            guard let dt = item.dt,
+                  let low = item.main?.tempMin,
+                  let high = item.main?.tempMax  else { continue }
+        }
+        
+        return dailyForecasts
     }
 
 }
