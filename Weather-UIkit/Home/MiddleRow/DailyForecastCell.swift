@@ -14,7 +14,9 @@ class DailyForecastCell: UICollectionViewCell {
     @IBOutlet private weak var timeLabel: UILabel!
     @IBOutlet private weak var temperatureLabel: UILabel!
     
-    func configure() {
-        
+    func configure(_ item: WeeklyForecastList) {
+        // img.image = UIImage()
+        timeLabel.text = item.dt_txt
+        temperatureLabel.text = "\(item.main?.temp ?? 0)°"
     }
 }

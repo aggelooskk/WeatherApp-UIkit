@@ -9,6 +9,7 @@ import UIKit
 
 class HomeVC: UIViewController {
     private var currentWeather: CurrentWeather?
+    private var weeklyForecast: WeeklyForecast?
     
     @IBOutlet private weak var tableView: UITableView!
     
@@ -16,26 +17,34 @@ class HomeVC: UIViewController {
         super.viewDidLoad()
         setupTableView()
         
-        Api.shared.fetchCurrentWeatherLive { weather in
-            guard let weather else { return }
-            print("not received data here")
-            DispatchQueue.main.async { [weak self] in
-            self?.currentWeather = weather
-            self?.tableView.reloadData()
-            }
-        }
+ //     Api.shared.fetchCurrentWeatherLive { weather in
+ //         guard let weather else { return }
+ //         print("not received data here")
+ //         DispatchQueue.main.async { [weak self] in
+ //         self?.currentWeather = weather
+ //         self?.tableView.reloadData()
+ //         }
+  //      }
         
         
         Api.shared.fetchSample(CurrentWeather.self) {
-            weather in
+           weather in
             guard let weather else { return }
-            print("weather: \(weather)")
+            DispatchQueue.main.async { [weak self] in
+                guard let self else { return }
+                currentWeather = weather
+                tableView.reloadData()
+            }
         }
         
         Api.shared.fetchSample(WeeklyForecast.self) {
             forecast in
             guard let forecast else { return }
-            print("forecast: \(forecast)")
+            DispatchQueue.main.async { [weak self] in
+                guard let self else { return }
+                weeklyforecast = forecast
+                tableView.reloadData()
+            }
         }
     }
     
@@ -59,6 +68,7 @@ extension HomeVC: UITableViewDataSource {
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: HomeCarouselRow.id, for: indexPath) as! HomeCarouselRow
+            cell.configure(weeklyForecast)
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: HomeWeeklyForecastRow.id, for: indexPath) as! HomeWeeklyForecastRow
