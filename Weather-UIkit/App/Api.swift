@@ -11,22 +11,35 @@ class Api {
     static let shared = Api()
     private init() {}
     
-    func fetchCurrentWeather(completion: @escaping (CurrentWeather?) -> Void) {
-        guard let path = Bundle.main.path(forResource: "CurrentWeather", ofType: "json") else {
-            completion(nil)
-            return
+    func fetchSample<T: Decodable>(_ type: T.Type, completion: @escaping (T?) -> Void) {
+            guard let path = Bundle.main.path(forResource: getResourceName(type), ofType: "json") else {
+                completion(nil)
+                return
+            }
+            let url = URL(filePath: path)
+            let decoder = JSONDecoder()
+            do {
+                let data = try Data(contentsOf: url)
+                let decodedData = try decoder.decode(
+                    type,
+                    from: data)
+                completion(decodedData)
+            } catch {
+                print(error)
+                completion(nil)
+            }
         }
-        let url = URL(filePath: path)
-        let decoder = JSONDecoder()
-        do {
-            let data = try Data(contentsOf: url)
-            let decoderData = try decoder.decode(CurrentWeather.self, from: data)
-            completion(decoderData)
-        } catch {
-            print(error)
-            completion(nil)
+        
+        private func getResourceName<T>(_ type: T.Type) -> String {
+            return switch type {
+            case is CurrentWeather.Type:
+                "CurrentWeather"
+            case is WeeklyForecast.Type:
+                "WeeklyForecast"
+            default:
+                ""
+            }
         }
-    }
     
     func fetchCurrentWeatherLive(completion: @escaping(CurrentWeather?) -> Void) {
         let urlStr = "https://api.openweathermap.org/data/2.5/weather?lat=37.9838&lon=23.7275&appid=6c97f874a9658c21efb0a5443d1be0bd&units=metric"

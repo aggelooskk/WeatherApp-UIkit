@@ -15,16 +15,30 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        Api.shared.fetchCurrentWeatherLive { weather in
+        
+        //       Api.shared.fetchCurrentWeatherLive { weather in
+        //           guard let weather else { return }
+        //           print("not received data here")
+        //           DispatchQueue.main.async {
+        //           self.currentWeather = weather
+        //           self.tableView.reloadData()
+        //           }
+        //       }
+        
+        
+        Api.shared.fetchSample(CurrentWeather.self) {
+            weather in
             guard let weather else { return }
-            print("not received data here")
-            DispatchQueue.main.async {
-            self.currentWeather = weather
-            self.tableView.reloadData()
-            }
+            print("weather: \(weather)")
+        }
+        
+        Api.shared.fetchSample(WeeklyForecast.self) {
+            forecast in
+            guard let forecast else { return }
+            print("forecast: \(forecast)")
         }
     }
-
+    
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
