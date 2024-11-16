@@ -24,7 +24,7 @@ class HomeVC: UIViewController {
  //         self?.currentWeather = weather
  //         self?.tableView.reloadData()
  //         }
-  //      }
+ //      }
         
         
         Api.shared.fetchSample(CurrentWeather.self) {
@@ -42,7 +42,7 @@ class HomeVC: UIViewController {
             guard let forecast else { return }
             DispatchQueue.main.async { [weak self] in
                 guard let self else { return }
-                weeklyforecast = forecast
+                weeklyForecast = forecast
                 tableView.reloadData()
             }
         }
