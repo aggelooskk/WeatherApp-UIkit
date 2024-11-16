@@ -16,14 +16,14 @@ class HomeVC: UIViewController {
         super.viewDidLoad()
         setupTableView()
         
-        //       Api.shared.fetchCurrentWeatherLive { weather in
-        //           guard let weather else { return }
-        //           print("not received data here")
-        //           DispatchQueue.main.async {
-        //           self.currentWeather = weather
-        //           self.tableView.reloadData()
-        //           }
-        //       }
+        Api.shared.fetchCurrentWeatherLive { weather in
+            guard let weather else { return }
+            print("not received data here")
+            DispatchQueue.main.async { [weak self] in
+            self?.currentWeather = weather
+            self?.tableView.reloadData()
+            }
+        }
         
         
         Api.shared.fetchSample(CurrentWeather.self) {
