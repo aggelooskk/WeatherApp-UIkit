@@ -32,28 +32,20 @@ class HomeWeeklyForecastRow: UITableViewCell {
     
     func configure(_ forecast: WeeklyForecast?) {
         guard let list = forecast?.list else { return }
-        
+        dailyForecast = list.getDailyForecasts()
+        tableView.reloadData()
     }
-    private func getDailyForecasts(_ list: [WeeklyForecastList]) -> [DailyForecast] {
-        var dailyForecasts: [DailyForecast] = []
-        for item in list {
-            guard let dt = item.dt,
-                  let low = item.main?.tempMin,
-                  let high = item.main?.tempMax  else { continue }
-        }
-        
-        return dailyForecasts
-    }
-
 }
 
 extension HomeWeeklyForecastRow: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return 5
+        return dailyForecast.count > 5 ? 5 : dailyForecast.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: WeeklyForecastDetailRow.id, for: indexPath) as! WeeklyForecastDetailRow
+        let forecast = dailyForecast[indexPath.row]
+        cell.configure(forecast)
         return cell
     }
 }

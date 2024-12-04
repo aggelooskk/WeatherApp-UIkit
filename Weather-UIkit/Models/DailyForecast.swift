@@ -8,8 +8,8 @@
 import UIKit
 
 struct DailyForecast {
-    let img: UIImage
     let day: String
+    let description: String?
     
     var lows: [Double] = []
     var highs: [Double] = []
