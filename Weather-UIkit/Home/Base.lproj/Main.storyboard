@@ -265,7 +265,13 @@
                             <constraint firstItem="agh-d4-EG1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="vsW-2k-Die"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="eQx-mz-v6U"/>
+                    <navigationItem key="navigationItem" id="eQx-mz-v6U">
+                        <barButtonItem key="rightBarButtonItem" image="line.3.horizontal" catalog="system" id="ggP-iz-Cd7">
+                            <connections>
+                                <action selector="didTapListButton:" destination="BYZ-38-t0r" id="1aU-K4-4xY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="agh-d4-EG1" id="0z6-X2-epO"/>
                     </connections>
@@ -294,6 +300,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="line.3.horizontal" catalog="system" width="128" height="65"/>
         <image name="sun.max.fill" catalog="system" width="128" height="125"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
