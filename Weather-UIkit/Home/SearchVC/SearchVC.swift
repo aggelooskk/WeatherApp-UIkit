@@ -34,7 +34,7 @@ class SearchVC: UIViewController {
           navigationItem.searchController = search
           navigationItem.hidesSearchBarWhenScrolling = false
           setupUI()
-          setupUITableView()
+          setupTableView()
       }
       
       private func setupUI() {
@@ -48,7 +48,7 @@ class SearchVC: UIViewController {
           ])
       }
       
-      private func setupUITableView() {
+      private func setupTableView() {
           tableView.dataSource = self
           tableView.delegate = self
           tableView.register(LocationRow.self, forCellReuseIdentifier: LocationRow.id)
@@ -63,7 +63,6 @@ extension SearchVC: UISearchResultsUpdating {
     
     
 }
-
 
   extension SearchVC: UITableViewDataSource {
       func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
