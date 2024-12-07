@@ -55,6 +55,8 @@ class HomeVC: UIViewController {
     
     
     @IBAction func didTapListButton(_ sender: UIBarButtonItem) {
+        let vc = SearchVC()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -88,11 +90,11 @@ extension HomeVC: UITableViewDataSource {
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             switch indexPath.row{
             case 0:
-                return 175
+                return 200
             case 1:
-                return 125
+                return 150
             case 2:
-                return 250
+                return 275
             default:
                 return 0
         }
