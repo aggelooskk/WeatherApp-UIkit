@@ -36,6 +36,8 @@ class Api {
                 "CurrentWeather"
             case is WeeklyForecast.Type:
                 "WeeklyForecast"
+            case is [SearchLocation].Type:
+                "SearchLocation"
             default:
                 ""
             }

@@ -9,6 +9,8 @@ import UIKit
 
 class SearchResultsVC: UIViewController {
     
+    private var locations: [SearchLocation] = []
+    
     private lazy var tableView: UITableView = {
           let table = UITableView()
         table.backgroundColor = .systemBackground
@@ -31,9 +33,16 @@ class SearchResultsVC: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(LocationRow.self, forCellReuseIdentifier: LocationRow.id)
-        
     }
-
+    
+    func update(text: String) {
+        print(text)
+        Api.shared.fetchSample([SearchLocation].self) { [weak self] locations in
+            guard let self, let locations else { return }
+            self.locations = locations
+            self.tableView.reloadData()
+        }
+    }
 }
 
 extension SearchResultsVC: UITableViewDataSource {
@@ -43,8 +52,9 @@ extension SearchResultsVC: UITableViewDataSource {
   
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: LocationRow.id, for: indexPath) as! LocationRow
+            let location = locations[indexPath.row]
+            cell.configure(location)
             return cell
-
             }
         }
 

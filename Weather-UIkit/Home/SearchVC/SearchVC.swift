@@ -44,7 +44,6 @@ class SearchVC: UIViewController {
               tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
               tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
               tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-              
           ])
       }
       
@@ -58,10 +57,9 @@ class SearchVC: UIViewController {
 extension SearchVC: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else { return }
-        print(text)
+        let searchResults = searchController.searchResultsController as! SearchResultsVC
+        searchResults.update(text: text)
     }
-    
-    
 }
 
   extension SearchVC: UITableViewDataSource {
@@ -72,7 +70,6 @@ extension SearchVC: UISearchResultsUpdating {
           func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
               let cell = tableView.dequeueReusableCell(withIdentifier: LocationRow.id, for: indexPath) as! LocationRow
               return cell
- 
               }
           }
 
