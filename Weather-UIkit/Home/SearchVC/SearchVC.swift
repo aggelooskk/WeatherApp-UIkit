@@ -20,7 +20,7 @@ class SearchVC: UIViewController {
 
     private lazy var tableView: UITableView = {
           let table = UITableView()
-        table.backgroundColor = .systemBackground
+          table.backgroundColor = .systemBackground
           table.showsHorizontalScrollIndicator = false
           table.showsVerticalScrollIndicator = false
           table.translatesAutoresizingMaskIntoConstraints = false
@@ -50,7 +50,7 @@ class SearchVC: UIViewController {
       private func setupTableView() {
           tableView.dataSource = self
           tableView.delegate = self
-          tableView.register(LocationRow.self, forCellReuseIdentifier: LocationRow.id)
+          tableView.register(LocationRow.self, forCellReuseIdentifier: LocationRow.searchId)
       }
   }
 
@@ -68,7 +68,7 @@ extension SearchVC: UISearchResultsUpdating {
       }
     
           func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-              let cell = tableView.dequeueReusableCell(withIdentifier: LocationRow.id, for: indexPath) as! LocationRow
+              let cell = tableView.dequeueReusableCell(withIdentifier: LocationRow.resultsId, for: indexPath) as! LocationRow
               return cell
               }
           }
