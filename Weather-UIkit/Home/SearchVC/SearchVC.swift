@@ -9,6 +9,8 @@ import UIKit
 
 class SearchVC: UIViewController {
     
+    private let lm = LocationsManager.shared
+    
     private lazy var search: UISearchController = {
         let search = UISearchController(searchResultsController: SearchResultsVC())
         search.searchBar.placeholder = "Search By City"
@@ -58,25 +60,41 @@ extension SearchVC: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else { return }
         let searchResults = searchController.searchResultsController as! SearchResultsVC
+        searchResults.delegate = self
         searchResults.update(text: text)
     }
 }
 
   extension SearchVC: UITableViewDataSource {
       func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-          return 0
+          let locations = lm.getLocations()
+          return locations.count
       }
     
           func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
               let cell = tableView.dequeueReusableCell(withIdentifier: LocationRow.resultsId, for: indexPath) as! LocationRow
+              let locations = lm.getLocations()
+              let location = locations[indexPath.row]
+              cell.configure(location)
               return cell
               }
           }
 
 extension SearchVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 70
     }
 }
   
+extension SearchVC: SearchResultsVCDelegate {
+    func didSelect(_ location: SearchLocation) {
+        let locations = lm.getLocations()
+        lm.appendAndSave(location)
+        let index = IndexPath(row: locations.count - 1, section: 0)
+        tableView.beginUpdates()
+        tableView.insertRows(at: [index], with: .automatic)
+        tableView.endUpdates()
+        search.isActive = false
+    }
+}
 

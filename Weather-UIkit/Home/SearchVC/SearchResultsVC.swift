@@ -7,7 +7,12 @@
 
 import UIKit
 
+protocol SearchResultsVCDelegate where Self: SearchVC {
+    func didSelect(_ location: SearchLocation)
+}
+
 class SearchResultsVC: UIViewController {
+    weak var delegate: SearchResultsVCDelegate?
     
     private var locations: [SearchLocation] = []
     
@@ -32,7 +37,7 @@ class SearchResultsVC: UIViewController {
         ])
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(LocationRow.self, forCellReuseIdentifier: LocationRow.id)
+        tableView.register(LocationRow.self, forCellReuseIdentifier: LocationRow.resultsId)
     }
     
     func update(text: String) {
@@ -51,7 +56,7 @@ extension SearchResultsVC: UITableViewDataSource {
     }
   
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: LocationRow.id, for: indexPath) as! LocationRow
+            let cell = tableView.dequeueReusableCell(withIdentifier: LocationRow.searchId, for: indexPath) as! LocationRow
             let location = locations[indexPath.row]
             cell.configure(location)
             return cell
@@ -59,8 +64,15 @@ extension SearchResultsVC: UITableViewDataSource {
         }
 
 extension SearchResultsVC: UITableViewDelegate {
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-      return 40
-  }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
+    func tableView(_ tableView: UITableView,
+     didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let location = locations[indexPath.row]
+        delegate?.didSelect(location)
+    }
 }
 
