@@ -84,12 +84,23 @@ extension SearchVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let locations = lm.getLocations()
+            let location = locations[indexPath.row]
+            lm.delete(location)
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
+        }
+    }
 }
   
 extension SearchVC: SearchResultsVCDelegate {
     func didSelect(_ location: SearchLocation) {
-        let locations = lm.getLocations()
         lm.appendAndSave(location)
+        let locations = lm.getLocations()
         let index = IndexPath(row: locations.count - 1, section: 0)
         tableView.beginUpdates()
         tableView.insertRows(at: [index], with: .automatic)

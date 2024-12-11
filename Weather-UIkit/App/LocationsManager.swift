@@ -16,13 +16,39 @@ class LocationsManager {
     private var locations: [SearchLocation] = []
     
     func getLocations() -> [SearchLocation] {
-        return locations
-    }
+         if !locations.isEmpty {
+             return locations
+         } else {
+             guard let data = defaults.object(forKey: "Locations") as? [Data] else { return [] }
+             do {
+                 let decoder = JSONDecoder()
+                 for item in data {
+                     let decodedData = try decoder.decode(
+                         SearchLocation.self,
+                         from: item)
+                     locations.append(decodedData)
+                 }
+                 return locations
+             } catch {
+                 print(error)
+                 return []
+             }
+         }
+     }
+     
+     func appendAndSave(_ location: SearchLocation) {
+         locations.append(location)
+         saveLocation()
+     }
     
-    func appendAndSave(_ location: SearchLocation) {
-        locations.append(location)
-        saveLocation()
-    }
+    func delete(_ location: SearchLocation) {
+         for i in 0..<locations.count {
+             guard location == locations[i] else { continue }
+             locations.remove(at: i)
+             saveLocation()
+             return
+         }
+     }
     
     private func saveLocation() {
         do {
