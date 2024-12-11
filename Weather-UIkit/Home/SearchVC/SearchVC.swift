@@ -16,6 +16,8 @@ class SearchVC: UIViewController {
     weak var delegate: SearchVCdelegate?
     private let lm = LocationsManager.shared
     
+    private var timer = Timer()
+    
     private lazy var search: UISearchController = {
         let search = UISearchController(searchResultsController: SearchResultsVC())
         search.searchBar.placeholder = "Search By City"
@@ -63,10 +65,17 @@ class SearchVC: UIViewController {
 
 extension SearchVC: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        guard let text = searchController.searchBar.text else { return }
-        let searchResults = searchController.searchResultsController as! SearchResultsVC
-        searchResults.delegate = self
-        searchResults.update(text: text)
+        guard let text = searchController.searchBar.text, !text.isEmpty else { return }
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { [weak self] _ in
+            guard let self else { return }
+            
+            timer.invalidate()
+            let searchResults = searchController.searchResultsController as! SearchResultsVC
+            searchResults.delegate = self
+            searchResults.update(text: text)
+            timer.invalidate()
+        }
     }
 }
 

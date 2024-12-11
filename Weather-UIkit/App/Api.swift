@@ -91,4 +91,27 @@ class Api {
         }
         task.resume()
     }
+    
+    func fetchLocation(for city: String, completion: @escaping([SearchLocation]?) -> Void) {
+        let urlStr = "http://api.openweathermap.org/geo/1.0/direct?q=\(city)&limit=5&appid=\(appId)"
+        let url = URL(string: urlStr)!
+        let task = URLSession.shared.dataTask(with: url) {
+            data, response, error in
+            guard error == nil, let data else {
+                completion(nil)
+                return
+            }
+            let decoder = JSONDecoder()
+            do {
+                let decodedData = try decoder.decode(
+                    [SearchLocation].self,
+                    from: data)
+                completion(decodedData)
+            } catch {
+                print(error)
+                completion(nil)
+            }
+        }
+        task.resume()
+    }
 }
