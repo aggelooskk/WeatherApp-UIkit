@@ -25,26 +25,6 @@ class HomeVC: UIViewController {
             vc.delegate = self
             navigationController?.pushViewController(vc, animated: true)
         }
-            
-//        Api.shared.fetchSample(CurrentWeather.self) {
-//           weather in
-//            guard let weather else { return }
-//            DispatchQueue.main.async { [weak self] in
-//                guard let self else { return }
-//                currentWeather = weather
-//                tableView.reloadData()
-//            }
-//        }
-//
-//        Api.shared.fetchSample(WeeklyForecast.self) {
-//            forecast in
-//            guard let forecast else { return }
-//            DispatchQueue.main.async { [weak self] in
-//                guard let self else { return }
-//                weeklyForecast = forecast
-//                tableView.reloadData()
-//            }
-//        }
     }
     
     private func setupTableView() {
@@ -60,6 +40,14 @@ class HomeVC: UIViewController {
                 guard let self else { return }
                 currentWeather = weather
             tableView.reloadData()
+            }
+        }
+        Api.shared.fetchForecast(lat: location.lat, lon: location.lon) { forecast in
+            guard let forecast else { return }
+            DispatchQueue.main.async { [weak self] in
+                guard let self else { return }
+                weeklyForecast = forecast
+                tableView.reloadData()
             }
         }
     }
@@ -118,3 +106,4 @@ extension HomeVC: SearchVCdelegate {
         fetchWeather(for: location)
     }
 }
+

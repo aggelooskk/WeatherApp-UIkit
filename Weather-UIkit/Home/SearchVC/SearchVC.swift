@@ -86,7 +86,7 @@ extension SearchVC: UISearchResultsUpdating {
       }
     
           func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-              let cell = tableView.dequeueReusableCell(withIdentifier: LocationRow.resultsId, for: indexPath) as! LocationRow
+              let cell = tableView.dequeueReusableCell(withIdentifier: LocationRow.searchId, for: indexPath) as! LocationRow
               let locations = lm.getLocations()
               let location = locations[indexPath.row]
               cell.configure(location)
