@@ -33,25 +33,15 @@ class HomeVC: UIViewController {
     }
     
     private func fetchWeather(for location: SearchLocation) {
-        Api.shared.fetchWeather(lat: location.lat, lon: location.lon) { weather in
-            guard let weather else { return }
+        Api.shared.fetchWeather(lat: location.lat, lon: location.lon) { [weak self] weather, forecast in
+            guard let self, let weather, let forecast else { return }
             print("not received data here")
-            DispatchQueue.main.async { [weak self] in
-                guard let self else { return }
-                currentWeather = weather
+            currentWeather = weather
+            weeklyForecast = forecast
             tableView.reloadData()
-            }
-        }
-        Api.shared.fetchForecast(lat: location.lat, lon: location.lon) { forecast in
-            guard let forecast else { return }
-            DispatchQueue.main.async { [weak self] in
-                guard let self else { return }
-                weeklyForecast = forecast
-                tableView.reloadData()
-            }
+            
         }
     }
-    
     
     @IBAction func didTapListButton(_ sender: UIBarButtonItem) {
         let vc = SearchVC()

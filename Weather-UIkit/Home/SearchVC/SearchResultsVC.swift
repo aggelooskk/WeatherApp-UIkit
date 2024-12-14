@@ -16,6 +16,8 @@ class SearchResultsVC: UIViewController {
     
     private var locations: [SearchLocation] = []
     
+    private let lm = LocationsManager.shared
+    
     private lazy var tableView: UITableView = {
           let table = UITableView()
         table.backgroundColor = .systemBackground
@@ -42,7 +44,7 @@ class SearchResultsVC: UIViewController {
     
     func update(text: String) {
         print(text)
-        Api.shared.fetchLocation(for: text) { [weak self] locations in
+        Api.shared.fetchLocation(city: text) { [weak self] locations in
             guard let locations else { return }
             DispatchQueue.main.async { [weak self] in
                 guard let self else { return }
@@ -58,12 +60,14 @@ extension SearchResultsVC: UITableViewDataSource {
         return locations.count
     }
   
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: LocationRow.searchId, for: indexPath) as! LocationRow
-            let location = locations[indexPath.row]
-            cell.configure(location)
-            return cell
-            }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let locations = lm.getLocations()
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: LocationRow.searchId, for: indexPath) as! LocationRow
+        let location = locations[indexPath.row]
+        cell.configure(location)
+        return cell
+    }
         }
 
 extension SearchResultsVC: UITableViewDelegate {
