@@ -59,6 +59,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="CQW-mU-L9A" firstAttribute="centerX" secondItem="qj0-Mp-IXp" secondAttribute="centerX" id="2ys-Wx-4OE"/>
                                                 <constraint firstItem="FJe-lu-J7Q" firstAttribute="height" secondItem="qj0-Mp-IXp" secondAttribute="height" multiplier="0.6" id="99M-3r-nyF"/>
@@ -73,6 +74,7 @@
                                                 <constraint firstItem="zZV-5Z-akC" firstAttribute="centerY" secondItem="qj0-Mp-IXp" secondAttribute="centerY" id="tdJ-ed-17u"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="descriptionLabel" destination="CQW-mU-L9A" id="PLY-2w-QLG"/>
                                             <outlet property="highlowLabel" destination="7MN-Dv-WCm" id="B4D-W6-bFi"/>
@@ -90,7 +92,7 @@
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FYO-FJ-DWC">
                                                     <rect key="frame" x="0.0" y="0.0" width="393" height="125"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IK7-B5-6fc">
                                                         <size key="itemSize" width="128" height="128"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -145,6 +147,7 @@
                                                     </cells>
                                                 </collectionView>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="FYO-FJ-DWC" secondAttribute="trailing" id="3IR-M5-J4d"/>
                                                 <constraint firstAttribute="bottom" secondItem="FYO-FJ-DWC" secondAttribute="bottom" id="KB1-yY-Yxq"/>
@@ -152,6 +155,7 @@
                                                 <constraint firstItem="FYO-FJ-DWC" firstAttribute="leading" secondItem="ZMw-n1-qxC" secondAttribute="leading" id="xtx-Gb-nyD"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="collectionView" destination="FYO-FJ-DWC" id="hNi-C9-4Kk"/>
                                         </connections>
@@ -171,7 +175,7 @@
                                                 </label>
                                                 <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3jK-7u-JJG">
                                                     <rect key="frame" x="20" y="39" width="353" height="256"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <prototypes>
                                                         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeeklyForecastDetailRow" rowHeight="76" id="8JK-fz-Mce" customClass="WeeklyForecastDetailRow" customModule="Weather_UIkit" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="50" width="353" height="76"/>
@@ -237,6 +241,7 @@
                                                     </prototypes>
                                                 </tableView>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="1z9-H6-qmz" firstAttribute="top" secondItem="NnG-3r-czT" secondAttribute="topMargin" constant="2" id="4jk-5o-5nc"/>
                                                 <constraint firstItem="3jK-7u-JJG" firstAttribute="centerX" secondItem="1z9-H6-qmz" secondAttribute="centerX" id="5Wj-OQ-ShL"/>
@@ -249,6 +254,7 @@
                                                 <constraint firstItem="1z9-H6-qmz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NnG-3r-czT" secondAttribute="leadingMargin" id="nx4-MA-21x"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="tableView" destination="3jK-7u-JJG" id="FIG-B6-Xod"/>
                                         </connections>

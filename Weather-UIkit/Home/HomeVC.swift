@@ -8,7 +8,12 @@
 import UIKit
 
 class HomeVC: UIViewController {
-    private var currentWeather: CurrentWeather?
+    private var currentWeather: CurrentWeather? {
+        didSet {
+            setBackgroundColor(currentWeather)
+        }
+    }
+    
     private var weeklyForecast: WeeklyForecast?
     
     let lm = LocationsManager.shared
@@ -27,6 +32,17 @@ class HomeVC: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setBackgroundColor(currentWeather)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        resetBackgroundColor()
+    }
+    
+    
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
@@ -39,7 +55,6 @@ class HomeVC: UIViewController {
             currentWeather = weather
             weeklyForecast = forecast
             tableView.reloadData()
-            
         }
     }
     

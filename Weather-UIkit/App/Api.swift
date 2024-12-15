@@ -102,7 +102,7 @@ class Api {
            return request
        }
     
-    func fetchWeather(lat: Double, lon: Double, completion: @escaping((CurrentWeather?, WeeklyForecast?)) -> Void) {
+    func fetchWeather(lat: Double, lon: Double, completion: @escaping ((CurrentWeather?, WeeklyForecast?)) -> Void) {
         guard let currentWeather = constructURL(for: .currrentWeather, lat, lon, nil),
               let weeklyForecast = constructURL(for: .weeklyForecast, lat, lon, nil) else {
             completion((nil, nil))
@@ -131,7 +131,7 @@ class Api {
         }
     }
     
-    func fetchLocation(city: String, completion: @escaping([SearchLocation]?) -> Void) {
+    func fetchLocation(city: String, completion: @escaping ([SearchLocation]?) -> Void) {
         guard let search = constructURL(for: .citySearch, nil, nil, city) else {
             completion(nil)
             return

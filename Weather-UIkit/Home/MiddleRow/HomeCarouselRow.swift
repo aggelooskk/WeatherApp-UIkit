@@ -31,13 +31,13 @@ class HomeCarouselRow: UITableViewCell {
         guard let list = forecast?.list else { return }
         self.list = list
         collectionView.reloadData()
-    }
+     }
+  }
 
-}
 
 extension HomeCarouselRow: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        list.count > 0 ? 8 : list.count
+        return min(8, list.count)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
