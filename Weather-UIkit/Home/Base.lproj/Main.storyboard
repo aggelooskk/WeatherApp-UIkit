@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="APQ-lE-1BF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QEZ-zR-fB6">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -18,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="agh-d4-EG1">
-                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeTopRow" rowHeight="175" id="QqW-n2-3SR" customClass="HomeTopRow" customModule="Weather_UIkit" customModuleProvider="target">
@@ -284,12 +285,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1066.4122137404579" y="24.647887323943664"/>
+            <point key="canvasLocation" x="1993.1297709923663" y="24.647887323943664"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1hz-oV-uq9">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="APQ-lE-1BF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="sun.max.fill" catalog="system" id="sos-D5-e01"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9ch-tu-hv2">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -302,11 +304,59 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LLO-4R-t6l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1066.4122137404579" y="24.647887323943664"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="gy4-VS-okd">
+            <objects>
+                <viewController id="Deo-Ca-AZN" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="D1R-g9-ifv">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YjI-Qp-M8o">
+                                <rect key="frame" x="0.0" y="59" width="393" height="710"/>
+                                <standardMapConfiguration key="preferredConfiguration"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fnB-nA-HFv"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fnB-nA-HFv" firstAttribute="trailing" secondItem="YjI-Qp-M8o" secondAttribute="trailing" id="6Ux-Ov-8NK"/>
+                            <constraint firstItem="YjI-Qp-M8o" firstAttribute="top" secondItem="fnB-nA-HFv" secondAttribute="top" id="Aa4-IH-02Q"/>
+                            <constraint firstItem="fnB-nA-HFv" firstAttribute="bottom" secondItem="YjI-Qp-M8o" secondAttribute="bottom" id="PAE-c9-pyT"/>
+                            <constraint firstItem="YjI-Qp-M8o" firstAttribute="leading" secondItem="fnB-nA-HFv" secondAttribute="leading" id="dUQ-LD-htg"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="map.fill" catalog="system" id="upA-5e-vl0"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oRK-pS-qNR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1066" y="680"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="U1r-Mx-eLh">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="QEZ-zR-fB6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HIg-k5-Mu0">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="APQ-lE-1BF" kind="relationship" relationship="viewControllers" id="NMH-kK-sXC"/>
+                        <segue destination="Deo-Ca-AZN" kind="relationship" relationship="viewControllers" id="8SM-mu-Tqo"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Miv-Ge-E6r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="139.69465648854961" y="24.647887323943664"/>
         </scene>
     </scenes>
     <resources>
         <image name="line.3.horizontal" catalog="system" width="128" height="65"/>
+        <image name="map.fill" catalog="system" width="128" height="110"/>
         <image name="sun.max.fill" catalog="system" width="128" height="125"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
